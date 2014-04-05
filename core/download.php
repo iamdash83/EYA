@@ -17,19 +17,19 @@
 *	with this program; if not, write to the Free Software Foundation, Inc.,
 *	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-require_once('transmissionRPC.php');
+require_once('TorrentClientFactory.php');
 require_once('../config.inc.php');
 
 if(isset($_GET['magnetLink'])){
 	$MagnetURI = $_GET['magnetLink'];
 	//open the connection to transmission rpc server
-	$transmissionRPC = new TransmissionRPC(TRANSMISSION_RPC,TRANSMISSION_RPC_USER,TRANSMISSION_RPC_PASS);
+	$transmissionRPC = TorrentClientFactory::getTorrentClient("transmission",TRANSMISSION_RPC,TRANSMISSION_RPC_USER,TRANSMISSION_RPC_PASS);
 	$params = array();
 	$params['filename'] = $MagnetURI;
-	$result = $transmissionRPC->add($MagnetURI,$params);
-	echo "OK";
-
-	//echo shell_exec("transmission-remote -a ".$MagnetURI);
+	$result = $transmissionRPC->addTorrent($MagnetURI);
+	if($result){
+		echo json_encode($result);
+	}
 }else{
 	echo "Fail";
 }

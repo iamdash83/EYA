@@ -1,7 +1,7 @@
 <?php
 /* EYA - Easy YTS Adder.  Plex library aware YTS torrent download viewer with Transmission Integration
 *	Copyright (C) 2014 	Jamie Briers 	<development@jrbriers.co.uk>
-*						Chris Pomfret	<enquiries@chrispomfret.com>
+*						 					Chris Pomfret	<enquiries@chrispomfret.com>
 *
 *	This program is free software; you can redistribute it and/or modify
 *	it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 */
 
 // Configuration file for plex-eya - fill in details then remove sample from filename
-define("ROOT_DIR", "/EYA/");//e.g. /EYA/ will work with localhost/EYA or 192.168.1.2:8080/EYA
+
 // Max number of results for YIFY API to return
 define("LIMIT", 50);// DON'T go over 50. You'll make yts cry.
 
@@ -36,7 +36,7 @@ define('SQL_HOST', 'localhost');
 define('HOST', 'http://localhost');
 
 // Transmission RPC Config. Define the port, and authentication details.  It is recommended authentication is turned on
-define('TRANSMISSION_PORT',"9091");
+define('TRANSMISSION_PORT',"9091")
 define('TRANSMISSION_RPC', HOST.":".TRANSMISSION_PORT."/transmission/rpc");
 //If Transmission Authentication is off leave these fields null
 define('TRANSMISSION_RPC_USER',null);
@@ -49,9 +49,9 @@ define("PLEX_ALL", "/all");
 define("PLEX_RECENT", "/recentlyAdded");
 
 //MySQL config
-define('DB', "DB");
-define('DB_USER', 'DB_USER');
-define('DB_PASS', 'DB_PASS');
+define('DB', "eya");
+define('DB_USER', 'eya');
+define('DB_PASS', '7eXVAAKmyNXm9HHr');
 
 //configuration strings
 define('CFG_3D_ENABLED', '3D_ENABLED');

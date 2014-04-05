@@ -1,7 +1,7 @@
 <?php
 /* EYA - Easy YTS Adder.  Plex library aware YTS torrent download viewer with Transmission Integration
 *	Copyright (C) 2014 	Jamie Briers 	<development@jrbriers.co.uk>
-*						Chris Pomfret	<enquiries@chrispomfret.com>
+*						 					Chris Pomfret	<enquiries@chrispomfret.com>
 *
 *	This program is free software; you can redistribute it and/or modify
 *	it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 */
 include 'EYA.php';
 include 'pagetimer.php';
-require_once('transmissionRPC.php');
+
 
 openDatabase();
 $time = startTimer();
@@ -63,9 +63,9 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 		<div class="sectionSelect">
 			<?
 			if(getConfig(CFG_3D_ENABLED)==1){
-				if($sectionID == getConfig(CFG_SECTION_ID)){
+				if($sectionID == CFG_SECTION_ID){
 					echo "<p><a class='selected-a' href='?id=".getConfig(CFG_SECTION_ID). $query."'>Movies</a> <a  href='?id=".getConfig(CFG_3D_SECTION_ID). $query."'>3D Movies</a></p>";
-				}else if($sectionID == getConfig(CFG_3D_SECTION_ID)){
+				}else if($sectionID == CFG_3D_SECTION_ID){
 					echo "<p><a href='?id=".getConfig(CFG_SECTION_ID). $query."'>Movies</a> <a class='selected-a' href='?id=".getConfig(CFG_3D_SECTION_ID). $query."'>3D Movies</a></p>";
 				}
 				

@@ -22,7 +22,7 @@ function getPercentage(xt,element){
 		url: url,
 		context: document.body
 	}).done(function(data) {
-		//console.log(data);
+		console.log(data);
 		obj = JSON.parse(data);
 
 		switch(obj.status){
@@ -74,8 +74,9 @@ $(document).ready(function(){
 			url: url ,
 			context: document.body
 		}).done(function(data) {
-			//console.log(data);
-			if(data == "OK"){
+			console.log(data);
+			data = JSON.parse(data);
+			if(data.result == "success"){
 				$(image).parent().block({
 			 		message: "Added",
 			 		css:{

@@ -1,7 +1,7 @@
 <?php
 /* EYA - Easy YTS Adder.  Plex library aware YTS torrent download viewer with Transmission Integration
 *	Copyright (C) 2014 	Jamie Briers 	<development@jrbriers.co.uk>
-*						Chris Pomfret	<enquiries@chrispomfret.com>
+*						 					Chris Pomfret	<enquiries@chrispomfret.com>
 *
 *	This program is free software; you can redistribute it and/or modify
 *	it under the terms of the GNU General Public License as published by

@@ -23,7 +23,6 @@ $queryString = $_REQUEST['queryString'];	// string that is the search term to se
 
 ?>
 	<h2>Search Results</h2>
-	<h3><a href="<?=ROOT_DIR?>">Return Home</a></h2>
 	<br/><br/>
 <?php
 

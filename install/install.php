@@ -1,7 +1,7 @@
 <?php
 /* EYA - Easy YTS Adder.  Plex library aware YTS torrent download viewer with Transmission Integration
 *	Copyright (C) 2014 	Jamie Briers 	<development@jrbriers.co.uk>
-*						Chris Pomfret	<enquiries@chrispomfret.com>
+*						 					Chris Pomfret	<enquiries@chrispomfret.com>
 *
 *	This program is free software; you can redistribute it and/or modify
 *	it under the terms of the GNU General Public License as published by
@@ -50,15 +50,15 @@ flushOutput();
 $sectionID = addSection($movies->key, $movies->title);
 setConfig(CFG_SECTION_ID, $sectionID);
 initDB(getConfig(CFG_SECTION_ID));
-if(is_int($movies3D) && $movies3D==-1){
-    setConfig(CFG_3D_ENABLED,0);
-}else{
-    echo "<br/>Processing 3D Movies (This may take a while)...</br>";
+if($movies3D!=-1){
+    echo "Processing 3D Movies (This may take a while)...</br>";
     flushOutput();
     setConfig(CFG_3D_ENABLED,1);
     $sectionID = addSection($movies3D->key, $movies3D->title);
     setConfig(CFG_3D_SECTION_ID, $sectionID);
-    initDB(getConfig(CFG_3D_SECTION_ID)); 
+    initDB(getConfig(CFG_3D_SECTION_ID));
+}else{
+    setConfig(CFG_3D_ENABLED,0);
 }
-echo "<br/>Go to <a href='".ROOT_DIR."'>Home to continue.</a>";
+
 closeDatabase();

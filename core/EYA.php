@@ -24,6 +24,7 @@
 
 include __DIR__.'/../config.inc.php';
 include __DIR__.'/DB.php';
+include __DIR__.'/TorrentClientFactory.php';
 
 // Returns array of IMDB IDs for films that are on plex
 function getPlexIMDB_a($sectionID){
@@ -178,25 +179,10 @@ function getYTSFilms($YTSAPIURL){
 
 function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 	//open the connection to transmission rpc server
-	$transmissionRPC = new TransmissionRPC(TRANSMISSION_RPC,TRANSMISSION_RPC_USER,TRANSMISSION_RPC_PASS);
+	$transmissionRPC = TorrentClientFactory::getTorrentClient("transmission",TRANSMISSION_RPC,TRANSMISSION_RPC_USER,TRANSMISSION_RPC_PASS);
 	//get all the running torrents in transmission
 	//$runningTorrents = $transmissionRPC->torrent_get();
-	$runningTorrents = $transmissionRPC->get(
-	    array(),    // id's
-	    array(      // Fields
-	            "id",
-	            "name",
-	            "percentDone",
-	            "magnetLink"
-	        )
-	    );
-	//refine the array
-
-	if(isset($runningTorrents->arguments->torrents)){
-		$runningTorrents = $runningTorrents->arguments->torrents;
-	}else{
-		$runningTorrents = array();
-	}
+	$runningTorrents = $transmissionRPC->getTorrents();
 
 	//create array to store the unique magnet links that we will later check for
 	$runningTorrentsMagnets = array();
