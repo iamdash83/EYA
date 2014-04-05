@@ -1,0 +1,7 @@
+* Make perdy.
+*	Implement caching
+* Implement Transmission RPC authentication
+* Implement uTorrent Remote
+
+Long term
+* Remove dependency on mysql(maybe)

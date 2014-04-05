@@ -1,0 +1,184 @@
+/* EYA - Easy YTS Adder.  Plex library aware YTS torrent download viewer with Transmission Integration
+*   Copyright (C) 2014  Jamie Briers    <development@jrbriers.co.uk>
+*                       Chris Pomfret   <enquiries@chrispomfret.com>
+*
+*   This program is free software; you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation; either version 2 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License along
+*   with this program; if not, write to the Free Software Foundation, Inc.,
+*   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+* {
+    font-family: "Helvetica Neue","Helvetica","Arial","sans-serif";
+    color: #eee;
+}
+
+body{
+    background-image:url('../images/background.jpg');
+    background-repeat:repeat;
+}
+
+img.greyed{
+    background-color: #0000FF;
+	filter: alpha(opacity=40);
+    opacity: .4;
+	border: 1px;
+}
+img.box-art{
+	width: 120px;
+	height: 177px;
+    z-index: -1;
+    border-radius:5px;
+}
+
+div.film-grid{
+	float: left;	
+    width: 120px;
+    height: 177px;
+    position: relative;
+    border:2px solid transparent;
+    border-radius:5px;
+    margin: 3px;
+}
+
+div.film-grid:hover{
+    border:2px solid #ff9d00;
+}
+
+div.downloading{
+    background-color: rgba(50, 255, 50, 0.2);
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    border-radius: 5px;
+}
+
+div.downloaded{
+    background-color: rgba(50, 255, 50, 0.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0px;
+}
+
+p.percentage{
+    z-index: 1011; 
+    position: absolute; 
+    padding: 0px; 
+    margin: 0px; 
+    width: 90%; 
+    top: 76.5px; 
+    left: 3px; 
+    text-align: center; 
+    color: black;
+    border: 3px solid rgb(170, 170, 170); 
+    background-color: rgb(255, 255, 255); 
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px; 
+    border-bottom-right-radius: 15px; 
+    border-bottom-left-radius: 15px;
+}
+
+p{
+    font-size: 12px;
+}
+
+h1{
+    font-family: 'Lemon', cursive;
+    font-size: 30px;
+}
+.movieListOuter{
+    width: 100%;
+    text-align: center;
+}
+.movieListInner{
+    display: inline-block;
+}
+.search{
+    float: right;
+}
+
+.clear {
+    clear: both
+}
+
+form{
+    width:500px;
+    margin:0 auto;
+}
+.search { 
+    padding:6px 15px 6px 30px;
+    margin:3px; 
+    background: url('../images/search.png') no-repeat 8px 6px; 
+}
+
+.rounded { 
+    border-radius:15px; 
+    -moz-border-radius:15px; 
+    -webkit-border-radius:15px; 
+}
+
+input[type=text]{
+    color:#bcbcbc;
+}
+input[type=Submit]{
+    color:#000000;
+}
+
+input[type=button], input[type=button]:hover {
+    position:relative; 
+    left:-6px;
+    border:1px solid #adc5cf;
+    background: #e4f1f9; /* Old browsers */
+    background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* IE10+ */
+    background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
+    color:#7da2aa;
+    cursor: pointer;
+}
+.dark{
+    background: url('../images/dark_grey.jpg');
+    width:95%;
+    height:50px;
+    padding:40px 25px;
+}
+.dark input[type=text]{
+    border:1px solid #2a2e31;
+    background-color:#2d3035;
+    color:#505358;
+}
+
+.pageNav{
+    width:100px;
+    margin: 0 auto;
+}
+
+.title{
+    width:500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navBar{
+    background-color: #000000;
+}
+
+a.selected-a{
+    font-size: 18px;
+}
+
+.sectionSelect{
+    float: left;
+}
