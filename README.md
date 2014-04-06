@@ -16,7 +16,7 @@ Known Issues:
 1. Occasionally, the search for IMDB will yield an incorrect value, resulting in EYA
 not detecting that the movie is in your Plex Library.  Ideas on how to fix this are welcome.  
 Known films: Run(2013)
-2. Search functionality is currently in development and may not work as intended.
+--update - We have found another IMDB search api and plan on implementing it very soon!
 
 Installation Instructions
 ==============================================
