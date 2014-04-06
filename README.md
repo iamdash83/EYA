@@ -24,7 +24,7 @@ Installation Instructions
 2. Create a mySQL user & database for EYA to use (take note of the password created)
 3. If not already installed, download Transmission(transmissionbt.com) and set up on your device
 4. Enable Remote/RPC, instructions vary but can be found online.  It is recommended that you enable authentication on your remote.
-5. Open sample.config.inc.php and enter configuration for your set up. (mySQL database/username/password, Transmission RPC username/password and any other configuration you wish to change)
+5. Open sample.config.inc.php and rename it to config.inc.php, then enter configuration for your set up. (mySQL database/username/password, Transmission RPC username/password and any other configuration you wish to change)
 6. If you wish not to use Filebot for organising your downloads, skip to step 9.
 7. Install Filebot(filebot.net) for your device.
 7. A sample Filebot script is included in the Repository. This is the file I use personally and no guarantees are made. Full Filebot information is found on their website(filebot.net)
