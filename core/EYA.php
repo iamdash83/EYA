@@ -220,7 +220,7 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 	foreach($filmList as $film){
 		$imdbCode = $film->imdbCode;
 
-		echo '<div class="film-grid" data-xt="'.(string)$film->xt.'" >';
+		echo '<div class="film-grid" data-xt="'.(string)$film->xt.'" title="'.(string)$film->titleClean.' ('.(string)$film->year.')">';
 	    if(isset($plexList[$imdbCode])){
 		   //Film is in plex
 	    	if ($displayPlexFilms == true){
