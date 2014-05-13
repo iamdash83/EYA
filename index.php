@@ -45,10 +45,10 @@ if($setNumber-1 < 1){
 
 $sectionNav = "?id=".$sectionID;
 
-$pURL = $sectionNav."?page=".($setNumber-1);//prev
-$spURL = $sectionNav."?page=".($setNumber-10);//skip prev
-$nURL = $sectionNav."?page=".($setNumber+1);//next
-$snURL = $sectionNav."?page=".($setNumber+10);//skip next
+$pURL = $sectionNav."&page=".($setNumber-1);//prev
+$spURL = $sectionNav."&page=".($setNumber-10);//skip prev
+$nURL = $sectionNav."&page=".($setNumber+1);//next
+$snURL = $sectionNav."&page=".($setNumber+10);//skip next
 
 if($setNumber-10 < 1){
 	$spURL = "?page=1";
