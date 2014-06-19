@@ -21,6 +21,8 @@ include 'EYA.php';
 include 'pagetimer.php';
 require_once('transmissionRPC.php');
 
+
+
 openDatabase();
 $time = startTimer();
 
@@ -40,6 +42,9 @@ if(isset($_GET["page"])){
 }
 
 $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryString']:'';
+
+
+
 ?>
 <html>
 	<head>
@@ -61,7 +66,7 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 			</form>
 		</div>
 		<div class="sectionSelect">
-			<?
+			<?php
 			if(getConfig(CFG_3D_ENABLED)==1){
 				if($sectionID == getConfig(CFG_SECTION_ID)){
 					echo "<p><a class='selected-a' href='?id=".getConfig(CFG_SECTION_ID). $query."'>Movies</a> <a  href='?id=".getConfig(CFG_3D_SECTION_ID). $query."'>3D Movies</a></p>";
@@ -77,9 +82,3 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 	<div class="title">
 		<h1>EYA - Easy YTS Adder</h1>
 	</div>
-
-<?
-
-
-
-

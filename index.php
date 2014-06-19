@@ -20,8 +20,11 @@
 include('core/head.php');
 // Start by opening connection to database
 
+$dependenciesSuccess = checkDependencies(CHECK_DEPENDENCY_PLEX | CHECK_DEPENDENCY_TRANSMISSION);
 
-
+if(!$dependenciesSuccess){
+	die("<br/><br/>One or more dependencies missing, please solve the issue and reload the page");
+}
 
 // Done on every page load - check if there's any new films in plex that should be added to db
 updateDB($sectionID);

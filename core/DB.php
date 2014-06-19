@@ -1,4 +1,4 @@
-<?
+<?php
 /* EYA - Easy YTS Adder.  Plex library aware YTS torrent download viewer with Transmission Integration
 *	Copyright (C) 2014 	Jamie Briers 	<development@jrbriers.co.uk>
 *						 					Chris Pomfret	<enquiries@chrispomfret.com>
@@ -45,6 +45,7 @@ function runQuery($sql){
         //echo $msg."</br>";
     }else{
         echo "Error: " . mysqli_error($con)."<br/>";
+        throw new Exception("Error Processing Request" . mysqli_error($con), 1);
     }
     return $result;
 }
@@ -61,8 +62,14 @@ function setConfig($key, $value){
 
 function getConfig($key){
     $sql = "SELECT `VALUE` FROM `Config` WHERE `KEY` = '".$key."'";
-    $result = runQuery($sql);
-    $value = mysqli_fetch_assoc($result);
+    
+    try{
+        $result = runQuery($sql);
+        $value = mysqli_fetch_assoc($result);    
+    }catch(Exception $e){
+        return -1;
+    }
+    
     return $value['VALUE'];
 }
 

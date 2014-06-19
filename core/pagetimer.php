@@ -34,4 +34,3 @@ function endTimer($st){
 	$finish = $time;
 	return "Page loaded in: ".round(($finish - $st), 4)."s";
 }
-?>

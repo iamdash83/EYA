@@ -18,6 +18,7 @@
 *	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 include '../core/head.php';
+$dependenciesSuccess = checkDependencies(CHECK_DEPENDENCY_PLEX);
 openDatabase();
 //global $host;
 function getPlexCategories(){
@@ -61,6 +62,3 @@ $movieSections = getPlexCategories();
 <?
 //initDB($is3D);
 closeDatabase();
-
-
-?>

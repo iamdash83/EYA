@@ -25,6 +25,34 @@
 include __DIR__.'/../config.inc.php';
 include __DIR__.'/DB.php';
 
+define("CHECK_DEPENDENCY_PLEX", 0x1);
+define("CHECK_DEPENDENCY_TRANSMISSION", 0x2);
+
+
+function checkDependencies($dependencies){
+	$success = true;
+
+	if($dependencies & CHECK_DEPENDENCY_PLEX == CHECK_DEPENDENCY_PLEX){
+		try{
+			$recentlyAddedPlexXML = new SimpleXMLElement(getData(PLEX_URL));
+		}catch(Exception $e){
+			echo "ERROR: Could not connect to Plex Media Server, Please ensure Plex is installed and running<br/>";
+			$success = false;
+		}
+	}
+
+	if(($dependencies & CHECK_DEPENDENCY_TRANSMISSION) == CHECK_DEPENDENCY_TRANSMISSION){
+		try{
+			$transmissionRPC = new TransmissionRPC(TRANSMISSION_RPC,TRANSMISSION_RPC_USER,TRANSMISSION_RPC_PASS);
+		}catch(Exception $e){
+			echo "ERROR: Could not connect to Transmission, Please ensure Transmission is installed and running<br/>";
+			$success = false;
+		}
+	}
+
+	return $success;
+}
+
 // Returns array of IMDB IDs for films that are on plex
 function getPlexIMDB_a($sectionID){
 	// Get all IMDB_IDs on plex
@@ -257,4 +285,3 @@ function flushOutput(){
 	//ob_end_flush();
 	sleep(1);
 }
-?>
