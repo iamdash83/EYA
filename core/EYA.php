@@ -250,7 +250,7 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 		$imdbCode = $film->imdbCode;
 
 		echo '<div class="film-grid" data-xt="'.(string)$film->xt.'" title="'.(string)$film->titleClean.' ('.(string)$film->year.')">';
-		
+		echo '<div class="box-art-container">';
 	    if(isset($plexList[$imdbCode])){
 		   //Film is in plex
 	    	if ($displayPlexFilms == true){
@@ -276,6 +276,8 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 			}
 			$count++;
 	    }
+	    echo "</div>";
+	    echo "<span class='imdbModal' data-imdbCode='".$film->imdbCode."'>Info</span>";
 	    echo "</div>";
 	}
 	echo "</div>";

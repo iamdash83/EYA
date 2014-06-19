@@ -42,14 +42,19 @@ img.box-art{
 div.film-grid{
 	float: left;	
     width: 120px;
-    height: 177px;
+    height: 195px;
     position: relative;
     border:2px solid transparent;
     border-radius:5px;
     margin: 3px;
 }
 
-div.film-grid:hover{
+div.box-art-container{
+    border:2px solid transparent;
+    width: 122px;
+}
+
+div.box-art-container:hover{
     border:2px solid #ff9d00;
 }
 
@@ -181,4 +186,8 @@ a.selected-a{
 
 .sectionSelect{
     float: left;
+}
+
+.imdbModal{
+    
 }
