@@ -193,9 +193,10 @@ function getYTSFilms($YTSAPIURL){
 		$film->year = (string)$jsonResult['MovieList'][$i]['MovieYear'];
 		$film->image_url = (string)$jsonResult['MovieList'][$i]['CoverImage'];
 		$film->imdbCode = (string)$jsonResult['MovieList'][$i]['ImdbCode'];
-		$film->torrentURL = (string)$jsonResult['MovieList'][$i]['TorrentMagnetUrl'];
+		$film->torrentURL =  (string)$jsonResult['MovieList'][$i]['TorrentUrl'];
+		$film->torrentMagnetURL = (string)$jsonResult['MovieList'][$i]['TorrentMagnetUrl'];
 
-		$url = parse_url(urldecode($film->torrentURL));
+		$url = parse_url(urldecode($film->torrentMagnetURL));
 		parse_str($url['query'], $query);
 		$film->xt = $query['xt'];
 
@@ -249,6 +250,7 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 		$imdbCode = $film->imdbCode;
 
 		echo '<div class="film-grid" data-xt="'.(string)$film->xt.'" title="'.(string)$film->titleClean.' ('.(string)$film->year.')">';
+		
 	    if(isset($plexList[$imdbCode])){
 		   //Film is in plex
 	    	if ($displayPlexFilms == true){
@@ -267,9 +269,11 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 			<?php
 			$count++;
 	    }else{
-		?>
-			<img class="box-art" data-magnet="<?=$film->torrentURL?>" src="<?=(string)$film->image_url?>"/>
-			<?php
+	    	if(ENABLE_TORRENT_URLS){
+	    		echo '<img class="box-art" data-magnet="'.$film->torrentURL.'" src="'.(string)$film->image_url.'"/>';
+			}else{
+				echo '<img class="box-art" data-magnet="'.$film->torrentMagnetURL.'" src="'.(string)$film->image_url.'"/>';
+			}
 			$count++;
 	    }
 	    echo "</div>";

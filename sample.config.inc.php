@@ -57,3 +57,7 @@ define('DB_PASS', 'DB_PASS');
 define('CFG_3D_ENABLED', '3D_ENABLED');
 define('CFG_3D_SECTION_ID', '3D_SECTION_ID');
 define('CFG_SECTION_ID', 'SECTION_ID');
+
+//torrent downloading configuration
+//ENABLE_TORRENT_URLS disables the transmission magnet integration and uses torrent files instead
+define('ENABLE_TORRENT_URLS', false);
