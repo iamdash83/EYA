@@ -1,1 +1,3 @@
 /config.inc.php
+*.sublime-project
+*.sublime-workspace
