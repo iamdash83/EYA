@@ -257,6 +257,7 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 				<div class="box-art-container">
 				<img class="box-art greyed"  src="<?=(string)$film->image_url?>"/>
 				<div class="downloaded"></div>
+				<span class='imdbModal' data-imdbCode='".$film->imdbCode."'>Info</span>;
 			<?php
 				$count++;
 			}	
@@ -279,7 +280,9 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 			$count++;
 	    }
 	    echo "</div>";
-	    echo "<span class='imdbModal' data-imdbCode='".$film->imdbCode."'>Info</span>";
+	    if($displayPlexFilms == false){
+	    	echo "<span class='imdbModal' data-imdbCode='".$film->imdbCode."'>Info</span>";
+	    }
 	    echo "</div>";
 	}
 	echo "</div>";
