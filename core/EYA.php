@@ -248,7 +248,7 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 	$count = 0;
 	foreach($filmList as $film){
 		$imdbCode = $film->imdbCode;
-
+		$showIMDBLink = false;
 		echo '<div class="film-grid" data-xt="'.(string)$film->xt.'" title="'.(string)$film->titleClean.' ('.(string)$film->year.')">';
 	    if(isset($plexList[$imdbCode])){
 		   //Film is in plex
@@ -257,8 +257,8 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 				<div class="box-art-container">
 				<img class="box-art greyed"  src="<?=(string)$film->image_url?>"/>
 				<div class="downloaded"></div>
-				<span class='imdbModal' data-imdbCode='".$film->imdbCode."'>Info</span>;
 			<?php
+				$showIMDBLink = true;
 				$count++;
 			}	
 		}elseif(isset($runningTorrentsMagnets[$film->xt])){
@@ -269,6 +269,7 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 			<div class="downloadingBar" style="height: <?=$runningTorrents[$runningTorrentsMagnets[$film->xt]]->percentDone?>%" ></div>
 			<p class="percentage" ><?=$runningTorrents[$runningTorrentsMagnets[$film->xt]]->percentDone?>%</p>
 			<?php
+			$showIMDBLink = true;
 			$count++;
 	    }else{
 	    	echo '<div class="box-art-container">';
@@ -278,9 +279,10 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 				echo '<img class="box-art" data-magnet="'.$film->torrentMagnetURL.'" src="'.(string)$film->image_url.'"/>';
 			}
 			$count++;
+			$showIMDBLink = true;
 	    }
 	    echo "</div>";
-	    if($displayPlexFilms == false){
+	    if($showIMDBLink){
 	    	echo "<span class='imdbModal' data-imdbCode='".$film->imdbCode."'>Info</span>";
 	    }
 	    echo "</div>";
