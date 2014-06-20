@@ -17,6 +17,7 @@
 *	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 function getPercentage(xt,element){
+	//console.log(xt);
 	url = "core/getPercentage.php?xt="+xt;
 	$.ajax({
 		url: url,
@@ -24,40 +25,58 @@ function getPercentage(xt,element){
 	}).done(function(data) {
 		//console.log(data);
 		obj = JSON.parse(data);
-
+		//console.log($(element));
 		switch(obj.status){
 			case 0://stopped torrent
 				element.children(".percentage").html("Stopped");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 			case 3://queued to download
 			case 1://queued to check files
 				element.children(".percentage").html("Queued");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 			case 2:
 				element.children(".percentage").html("Checking Files");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 			case 4://downloading
 				element.children(".percentage").html(obj.percentage + "%");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 			case 5://queued to seed
 				element.children(".percentage").html("Queued to Seed");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 			case 6:
 				element.children(".percentage").html("Seeding");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 			case -1:
 				element.children(".percentage").html("Removed");
-				element.children(".downloading").css('height',"0%");
+				element.children(".downloadingBar").css('height',"0%");
+				image = element.children("img.box-art")
+				image.removeClass("greyed");
+				var dataMagnet = image.attr('data-magnet-backup');
+		 		image.attr('data-magnet-backup',"");
+		 		image.attr('data-magnet', dataMagnet);
+
+		 		image.css('cursor',"pointer");
+
+		 		var timer = image.attr('timer');
+		 		clearInterval(timer);
+		 		image.attr('timer','');
+
+		 		//element.append('<div class="downloadingBar" style="height: 0%" ></div>');
+		 		//element.append("<p class='percentage'>Adding</p>");
+		 		element.removeClass("downloading");
+		 		element.children("div").remove();
+		 		element.children("p").remove();
+
 				break;
 			default:
 				element.children(".percentage").html("Unknown status");
-				element.children(".downloading").css('height',obj.percentage + "%");
+				element.children(".downloadingBar").css('height',obj.percentage + "%");
 				break;
 		}
 
@@ -76,53 +95,41 @@ $(document).ready(function(){
 		}).done(function(data) {
 			//console.log(data);
 			if(data == "OK"){
-				$(image).parent().block({
-			 		message: "Added",
-			 		css:{
-			 			'-moz-border-radius': '15px',
-						'border-radius': '15px',
-						//background-color: rgba(0,0,0,0.8),
-						'width': '90%',
-			 		}
-			 	});
-			 	window.setTimeout(function(){
 			 		image.addClass("greyed");
+			 		var dataMagnet = image.attr('data-magnet');
 			 		image.attr('data-magnet',"");
+			 		image.attr('data-magnet-backup', dataMagnet)
 			 		image.css('cursor',"");
-			 		$(image).parent().unblock();
+			 		//$(image).parent().unblock();
 
 			 		element = $(image).parent();
 
-			 		element.append('<div class="downloading" style="height: 0%" ></div>');
-			 		element.append("<p class='percentage'>0%</p>");
-				 	xt = $(element).attr('data-xt');
+			 		element.append('<div class="downloadingBar" style="height: 0%" ></div>');
+			 		element.append("<p class='percentage'>Adding</p>");
+			 		element.addClass("downloading");
 
-				 	window.setInterval(function(xt, element){
+				 	xt = $(element).parent().attr('data-xt');
+
+				 	var interval = window.setInterval(function(xt, element){
 						getPercentage(xt,element);
 						//console.log("getPercentage " + xt);
 					},200,xt,element);
-			 	},750);
+					image.attr("timer",interval);
 			 }else{
-				$(image).parent().block({
-			 		message: "Add Failed",
-			 		css:{
-			 			'-moz-border-radius': '15px',
-						'border-radius': '15px',
-						//background-color: rgba(0,0,0,0.8),
-						'width': '90%',
-			 		}
-			 	});
-			 	window.setTimeout(function(){
-			 		$(image).parent().unblock();
-			 	},750);
+				var percentElement = element.append("<p class='percentage'>Add Failed</p>");
+			 	window.setTimeout(function(percentElement){
+			 		percentElement.remove();
+			 	},750,percentElement);
 			 }
 		 	//Then maybe do some more stuff here (ajax call to add something to say its in transmission :S)
 		});
 	}).css('cursor', 'pointer');
 
-	$('div:has(> .downloading)').each(function(){
+	$('div.downloading').each(function(){
+		//console.log("div.downloading");
+		//console.log($(this));
 		element = $(this);
-		xt = $(this).attr('data-xt').toString();
+		xt = $(this).parent().attr('data-xt').toString();
 		inter = setInterval(function(xt,element){
 			//console.log("getPercentage" + xt);
 			getPercentage(xt,element);
@@ -136,7 +143,7 @@ $(document).ready(function(){
 		src = "http://www.imdb.com/title/" + imdb;
 
 		$.getJSON("http://noembed.com/embed?url=" + src, function( data ){
-			console.log("DATA" + data.html);
+			//console.log("DATA" + data.html);
 			$.modal(data.html, {
 				closeHTML:"",
 				containerCss:{ 

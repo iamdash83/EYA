@@ -52,13 +52,15 @@ div.film-grid{
 div.box-art-container{
     border:2px solid transparent;
     width: 122px;
+    position: relative;
 }
 
 div.box-art-container:hover{
     border:2px solid #ff9d00;
+    border-radius: 5px;
 }
 
-div.downloading{
+div.downloadingBar{
     background-color: rgba(50, 255, 50, 0.2);
     position: absolute;
     width: 100%;
@@ -189,5 +191,5 @@ a.selected-a{
 }
 
 .imdbModal{
-    
+    cursor: pointer;
 }

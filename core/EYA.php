@@ -250,11 +250,11 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 		$imdbCode = $film->imdbCode;
 
 		echo '<div class="film-grid" data-xt="'.(string)$film->xt.'" title="'.(string)$film->titleClean.' ('.(string)$film->year.')">';
-		echo '<div class="box-art-container">';
 	    if(isset($plexList[$imdbCode])){
 		   //Film is in plex
 	    	if ($displayPlexFilms == true){
 			?>
+				<div class="box-art-container">
 				<img class="box-art greyed"  src="<?=(string)$film->image_url?>"/>
 				<div class="downloaded"></div>
 			<?php
@@ -263,12 +263,14 @@ function printFilmList($filmList, $plexList, $displayPlexFilms = true){
 		}elseif(isset($runningTorrentsMagnets[$film->xt])){
 			//this is in transmission
 			?>
+			<div class="box-art-container downloading">
 			<img class="box-art greyed"  src="<?=(string)$film->image_url?>"/>
-			<div class="downloading" style="height: <?=$runningTorrents[$runningTorrentsMagnets[$film->xt]]->percentDone?>%" ></div>
+			<div class="downloadingBar" style="height: <?=$runningTorrents[$runningTorrentsMagnets[$film->xt]]->percentDone?>%" ></div>
 			<p class="percentage" ><?=$runningTorrents[$runningTorrentsMagnets[$film->xt]]->percentDone?>%</p>
 			<?php
 			$count++;
 	    }else{
+	    	echo '<div class="box-art-container">';
 	    	if(ENABLE_TORRENT_URLS){
 	    		echo '<img class="box-art" data-magnet="'.$film->torrentURL.'" src="'.(string)$film->image_url.'"/>';
 			}else{
