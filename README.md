@@ -3,7 +3,7 @@ Plex-EYA
 
 EYA, Easy YTS Adder, is a PHP based web interface which pulls the latest releases from the YTS APIs,
 cross references them with films you have in your Plex Library (so that you don't re-download them),
-and allows a one click interface to add the files to Transmission and displays the current download status.  
+and allows a one click interface to add the files to Transmission and displays the current download status.
 Following the download, a simple Filebot script can be run, which processes the downloaded media and
 organises nicely for Plex to pick up.
 
@@ -14,7 +14,7 @@ The service requires Plex(Plex.tv), Transmission(transmissionbt.com), PHP, mySQL
 Known Issues:
 ============
 1. Occasionally, the search for IMDB will yield an incorrect value, resulting in EYA
-not detecting that the movie is in your Plex Library.  Ideas on how to fix this are welcome.  
+not detecting that the movie is in your Plex Library.  Ideas on how to fix this are welcome.
 Known films: Run(2013)
 --update - We have found another IMDB search api and plan on implementing it very soon!
 

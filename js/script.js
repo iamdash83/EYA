@@ -146,11 +146,11 @@ $(document).ready(function(){
 			//console.log("DATA" + data.html);
 			$.modal(data.html, {
 				closeHTML:"",
-				containerCss:{ 
+				containerCss:{
 					"border-radius":"5px",
 					backgroundColor:"#000",
-					borderColor:"#000", 
-					"max-height":'50%', 
+					borderColor:"#000",
+					"max-height":'50%',
 					"max-width":'50%',
 				},
 				overlayClose:true
@@ -159,7 +159,7 @@ $(document).ready(function(){
 		//src = "https://www.google.co.uk/?gfe_rd=cr&ei=ON6iU6fCO-_R8ger5ICwAw&gws_rd=ssl#q=test&output=embed"
 		//var src = "http://www.google.co.uk";
 		//$.modal("<iframe src='http://www.imdb.com/title/" + imdb + "'></iframe>");
-		
+
 		//$.modal("<div><h1>SimpleModal</h1></div>");
 	});
 

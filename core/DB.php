@@ -62,14 +62,14 @@ function setConfig($key, $value){
 
 function getConfig($key){
     $sql = "SELECT `VALUE` FROM `Config` WHERE `KEY` = '".$key."'";
-    
+
     try{
         $result = runQuery($sql);
-        $value = mysqli_fetch_assoc($result);    
+        $value = mysqli_fetch_assoc($result);
     }catch(Exception $e){
         return -1;
     }
-    
+
     return $value['VALUE'];
 }
 

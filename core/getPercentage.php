@@ -56,13 +56,13 @@ $runningTorrents = $transmissionRPC->get(
 
             $ret = new StdClass();
             if(isset($runningTorrents[$i]->status)){
-                $ret->status = $runningTorrents[$i]->status;    
+                $ret->status = $runningTorrents[$i]->status;
             }else{
                 $ret->status = 0;
             }
-                
 
-            
+
+
             $ret->percentage = $runningTorrents[$i]->percentDone;
             echo json_encode($ret);
             $found = true;

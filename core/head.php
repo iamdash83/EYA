@@ -51,7 +51,7 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 		<title>EYA - Easy YTS Adder</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link href="<?=ROOT_DIR?>/css/style.css" rel="stylesheet" type="text/css">
+      <link href="<?=ROOT_DIR?>/css/style.css" rel="stylesheet" type="text/css">
     	<link href="<?=ROOT_DIR?>/css/noembed.css" rel="stylesheet" type="text/css">
     	<link href='http://fonts.googleapis.com/css?family=Lemon' rel='stylesheet' type='text/css'>
     	<script src="<?=ROOT_DIR?>/lib/jquery-2.1.0.min.js"></script>
@@ -59,7 +59,7 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 		<script src="<?=ROOT_DIR?>/lib/jquery.simplemodal.1.4.4.min.js"></script>
 		<script src="<?=ROOT_DIR?>/js/script.js"></script>
 	</head>
-	<body>	
+	<body>
 	<div class="navBar">
 		<div class="search">
 			<form action="search.php" method="post">
@@ -75,7 +75,7 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 				}else if($sectionID == getConfig(CFG_3D_SECTION_ID)){
 					echo "<p><a href='?id=".getConfig(CFG_SECTION_ID). $query."'>Movies</a> <a class='selected-a' href='?id=".getConfig(CFG_3D_SECTION_ID). $query."'>3D Movies</a></p>";
 				}
-				
+
 			}
 			//echo "<p><a href='?id=".getConfig(CFG_SECTION_ID). $query."'>Movies</a> <a class='selected-a' href='?id=".getConfig(CFG_3D_SECTION_ID). $query."'>3D Movies</a></p>";
 			?>

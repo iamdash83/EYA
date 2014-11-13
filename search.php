@@ -35,7 +35,7 @@ if ($numberOfResults==0){$numberOfResults=0;
 
 	// Get array of IMDB_IDs on plex
 	$IMDB_ID_plex_a = getPlexIMDB_a($sectionID);
-	
+
 
 	$numberPrinted = printFilmList($films,$IMDB_ID_plex_a,false);
 }
