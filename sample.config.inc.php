@@ -32,19 +32,22 @@ define("YIFY_API", YIFY_DOMAIN."api/list.json?limit=".LIMIT);
 // Host where mySQL is
 define('SQL_HOST', 'localhost');
 
-// Host for Plex and transmission
-define('HOST', 'http://localhost');
+// Host for Plex
+define('PLEX_HOST', 'http://localhost');
+
+// Host for Transmission
+define('TRANSMISSION_HOST', 'http://localhost');
 
 // Transmission RPC Config. Define the port, and authentication details.  It is recommended authentication is turned on
 define('TRANSMISSION_PORT',"9091");
-define('TRANSMISSION_RPC', HOST.":".TRANSMISSION_PORT."/transmission/rpc");
+define('TRANSMISSION_RPC', TRANSMISSION_HOST.":".TRANSMISSION_PORT."/transmission/rpc");
 //If Transmission Authentication is off leave these fields null
 define('TRANSMISSION_RPC_USER',null);
 define('TRANSMISSION_RPC_PASS',null);
 
 // Category number of plex movies XML
 define("PLEX_SECTIONS", ":32400/library/sections/");
-define("PLEX_URL", HOST.PLEX_SECTIONS);
+define("PLEX_URL", PLEX_HOST.PLEX_SECTIONS);
 define("PLEX_ALL", "/all");
 define("PLEX_RECENT", "/recentlyAdded");
 

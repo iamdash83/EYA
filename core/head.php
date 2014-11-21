@@ -52,9 +52,9 @@ $query = (isset($_REQUEST['queryString'])) ? '&queryString='.$_REQUEST['queryStr
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="<?=ROOT_DIR?>/css/style.css" rel="stylesheet" type="text/css">
-    	<link href="<?=ROOT_DIR?>/css/noembed.css" rel="stylesheet" type="text/css">
-    	<link href='http://fonts.googleapis.com/css?family=Lemon' rel='stylesheet' type='text/css'>
-    	<script src="<?=ROOT_DIR?>/lib/jquery-2.1.0.min.js"></script>
+      <link href="<?=ROOT_DIR?>/css/noembed.css" rel="stylesheet" type="text/css">
+      <link href='http://fonts.googleapis.com/css?family=Lemon' rel='stylesheet' type='text/css'>
+      <script src="<?=ROOT_DIR?>/lib/jquery-2.1.0.min.js"></script>
 		<script src="<?=ROOT_DIR?>/lib/jquery.blockUI.js"></script>
 		<script src="<?=ROOT_DIR?>/lib/jquery.simplemodal.1.4.4.min.js"></script>
 		<script src="<?=ROOT_DIR?>/js/script.js"></script>
